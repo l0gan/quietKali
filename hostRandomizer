@@ -14,6 +14,9 @@ if [ $2 = "revert" ]; then
 		echo "[-] ERROR: Missing hostname backup file. Are you sure you have run hostRandomizer previously?"
 	else
 		mv $HOSTNAMEBKP $HOSTNAMEFILE
+		service hostname.sh
+		echo "Your hostname has been reverted to:"
+		hostname
 	fi
 else
 	#MAC Address Change (requires macchanger)
