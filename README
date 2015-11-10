@@ -14,3 +14,5 @@ Enter the interface in which you want to randomize the MAC address.
 ./hostRandomizer [interface] revert
 
 Use to revert to the original interface MAC address and hostname
+
+Please let me know if you have any suggestions or features to add.
