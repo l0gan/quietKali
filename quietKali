@@ -1,0 +1,26 @@
+#! /bin/sh
+HOSTSFILE="/etc/hosts"
+HOSTSBKP="/etc/hosts.bkp"
+if [ $# -eq 0 ]; then
+	echo "Something went wrong. Please use the format './quietKali on' OR './quietKali off'"
+	exit 1
+fi
+if [ $1 = "on" ];then
+	iptables -A OUTPUT -d 192.124.249.10 -j DROP
+	iptables -A OUTPUT -d 192.99.200.113 -j DROP
+	cp $HOSTSFILE $HOSTSBKP
+	echo "127.0.0.1    kali    kali.com    kali.org security.kali.org    http.kali.org    update.kali.org" >> /etc/hosts
+	echo "quietKali has been turned on."
+elif [ $1 = "off" ]; then
+	iptables -D OUTPUT -d 192.124.249.10 -j DROP
+	iptables -D OUTPUT -d 192.99.200.113 -j DROP
+	if [ ! -f $HOSTSBKP ]; then
+		echo "[-] ERROR: /etc/hosts.bkp not found. Are you sure you have quietKali on?"
+	else
+		mv $HOSTSBKP $HOSTSFILE
+	fi
+	echo "quietKali has been turned off."
+else
+	echo "Something went wrong. Please use the format './quietKali on' OR './quietKali off'"
+fi
+

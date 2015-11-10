@@ -1,0 +1,8 @@
+quietKali is a script to enable and disable functions in Kali. 
+
+This tool is useful for Red Teamers who would like to use Kali for the tools and ease of use, but need to make sure that Kali does not reach out to the Kali servers and flag defenses based on "hacking tool" detected. (This has happened at engagements where a hostname or DNS lookup containing "Kali" flags an alert, and you are caught.)
+
+Use:
+./quietKali [on/off]
+
+"on" will enable quietKali, "off" will disable quietKali. Changes made are permenant and meant to last through reboots. You must turn quietKali off to apt-get update / upgrade and install packages.
