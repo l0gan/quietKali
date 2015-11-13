@@ -1,0 +1,12 @@
+jsmith
+jdoe
+smithj
+doej
+HP
+Dell-M5500
+Dell
+WinXP
+Win7
+Win10
+OSX
+ConfRoom

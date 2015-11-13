@@ -1,18 +1,19 @@
-quietKali is a set of scripts to enable and disable functions in Kali. 
+# quietKali
 
-This tool is useful for Red Teamers who would like to use Kali for the tools and ease of use, but need to make sure that Kali does not reach out to the Kali servers and flag defenses based on "hacking tool" detected. (This has happened at engagements where a hostname or DNS lookup containing "Kali" flags an alert, and you are caught.)
+quietKali is a tool to silence your Kali installation. If you have ever been on a red team engagement and have been found out because your hostname contained the word "kali" or your Kali box inadvertently attempted to contact Kali servers, you need quietKali.
 
-Use:
-./quietKali [on/off]
+quietKali will disable access to Kali servers, change your MAC address (to hide your true identity), and change your hostname.
 
-"on" will enable quietKali, "off" will disable quietKali. Changes made are permenant and meant to last through reboots. You must turn quietKali off to apt-get update / upgrade and install packages.
+# Usage
 
-./hostRandomizer [interface]
+--on, Enable quietKali. This will modify your machine to keep from connecting to Kali servers.
+--off, Disable quietKali. This will remove settings set when turning on quietKali and allow you to connect to Kali servers again. quietKali must be off to run apt-get update and install.
+--mac (-m), Change MAC address. Specify the interface you want to change the MAC address of. If using the --hostname (-n) option, the MAC address will be changed to match the type of host you are emulating.
+--hostname (-n), Set hostname. Valid options are random, router, printer, workstation, server, or manual. Manual will request a string to use as the hostname, which will allow you to match to the customer environment better.
+--revert, Revert changes. Will turn off quietKali and restore settings for mac and hostname changes.
 
-Enter the interface in which you want to randomize the MAC address.
+# Planed Development
 
-./hostRandomizer [interface] revert
-
-Use to revert to the original interface MAC address and hostname
-
-Please let me know if you have any suggestions or features to add.
+1.  I am looking to add more potential hostnames. Currently they are randomly selected from the contents of the files in the names directory.
+2.  Set MAC address to match the type of device you are emulating. So if you choose a printer hostname, the MAC address will be a random one with the OUI of a printer manufacturer. 
+3.  Other?... If you have ideas, let me know!

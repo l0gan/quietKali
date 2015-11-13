@@ -1,0 +1,8 @@
+Dell
+IBM
+HP
+DC
+EXCH
+WEB
+DB
+SQL

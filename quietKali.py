@@ -103,25 +103,30 @@ def hostnameChange():
 	elif hostnameLower == "workstation":
 		print("You selected a Workstation hostname. Generating....")
 		number=id_generator()
-                hostnameNew="Workstation-" + number	
+		workstationname=workstationBaseName()
+                hostnameNew=(workstationname.rstrip("\n") + "-" + number)	
 	elif hostnameLower == "printer":
 		print("You selected a Printer hostname. Generating....")
 		number=id_generator()
-                hostnameNew="Printer-" + number
+		printername=printerBaseName()
+                hostnameNew=(printername.rstrip("\n") + "-" + number)
 	elif hostnameLower == "router":
 		print("You selected a Router hostname. Generating....")
 		number=id_generator()
-                hostnameNew="Router-" + number
+		routername=routerBaseName()
+                hostnameNew=(routername.rstrip("\n") + "-" + number)
 	elif hostnameLower == "random":
 		print("You selected a Random hostname. Generating....")
 		number=id_generator()
-                hostnameNew="Random-" + number
+		randomname=randomBaseName()
+                hostnameNew=(randomname.rstrip("\n") + "-" + number)
 	elif hostnameLower == "manual":
 		hostnameNew=raw_input("Please enter the hostname you would like to use: ")
 	else:
 		print("I am unsure what you are requesting, so I am generating a random hostname....")	
 		number=id_generator()
-                hostnameNew="Random-" + number
+                randomname=randomBaseName()
+                hostnameNew=(randomname.rstrip("\n") + "-" + number)
 	# Backup original hostname
 	os.system("cp /etc/hostname /etc/hostname.orig")
 	os.system("echo " + hostnameNew + " > /etc/hostname")
@@ -132,6 +137,20 @@ def id_generator(size=4, chars=string.digits):
                 return ''.join(random.choice(chars) for _ in range(size))
 
 def serverBaseName():
-	return random.choice(open("servers.txt").readlines())	
+	return random.choice(open("names/servers.txt").readlines())
+
+def printerBaseName():
+        return random.choice(open("names/printers.txt").readlines())
+
+def workstationBaseName():
+        return random.choice(open("names/workstations.txt").readlines())
+
+def routerBaseName():
+        return random.choice(open("names/routers.txt").readlines())
+
+def randomBaseName():
+	randomfile=random.choice(os.listdir("names/"))
+        return random.choice(open("names/" + randomfile).readlines())
+
 
 quietKali()
