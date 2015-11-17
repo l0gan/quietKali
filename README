@@ -17,3 +17,5 @@ quietKali will disable access to Kali servers, change your MAC address (to hide 
 1.  I am looking to add more potential hostnames. Currently they are randomly selected from the contents of the files in the names directory.
 2.  Set MAC address to match the type of device you are emulating. So if you choose a printer hostname, the MAC address will be a random one with the OUI of a printer manufacturer. 
 3.  Other?... If you have ideas, let me know!
+
+http://offenseismyprimarydefense.blogspot.com/2015/11/quietkali.html
