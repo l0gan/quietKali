@@ -134,7 +134,7 @@ def hostnameChange():
 	print("Hostname has been changed to: " + hostnameNew)
 
 def id_generator(size=4, chars=string.digits):
-                return ''.join(random.choice(chars) for _ in range(size))
+	return ''.join(random.choice(chars) for _ in range(size))
 
 def serverBaseName():
 	return random.choice(open("names/servers.txt").readlines())
@@ -152,5 +152,5 @@ def randomBaseName():
 	randomfile=random.choice(os.listdir("names/"))
         return random.choice(open("names/" + randomfile).readlines())
 
-
-quietKali()
+if __name__ == "__main__":
+	quietKali()
